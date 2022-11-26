@@ -19,14 +19,14 @@ class Human(Player):
         
         Enter choice number here: """))
         if user_input == "0":
-            self.current_gesture = self.gesture_list[0]
+            self.current_gesture = "Rock"
         elif user_input == "1":
-            self.current_gesture = self.gesture_list[1]
+            self.current_gesture = "Paper"
         elif user_input == "2":
-            self.current_gesture = self.gesture_list[2]
+            self.current_gesture = "Scissors"
         elif user_input == "3":
-            self.current_gesture = self.gesture_list[3]
+            self.current_gesture = "Lizard"
         elif user_input == "4":
-            self.current_gesture = self.gesture_list[4]
+            self.current_gesture = "Spock"
         else:
             print ("Oops! Please enter one of the 5 number options.")

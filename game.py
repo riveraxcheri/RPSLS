@@ -26,67 +26,75 @@ class Game:
     def choose_players(self):
         user_input=input("How many players? (please enter 1 or 2) ")
         if user_input == "1":
-            self.player_one.current_gesture = self.player_one.select_gesture()
-            self.player_two.current_gesture = self.player_two.select_gesture()
-            print (f"Player 1 selected {self.player_one.current_gesture}")
-            print (f"Player 2 selected {self.player_two.current_gesture}")
-            self.determine_winner()
+            self.new_round()
         elif user_input == "2":
             self.player_two= Human()
-            self.player_one.current_gesture = self.player_one.select_gesture()
-            self.player_two.current_gesture = self.player_two.select_gesture()
-            print (f"Player 1 selected {self.player_one.current_gesture}")
-            print (f"Player 2 selected {self.player_two.current_gesture}")
-            self.determine_winner()
+            self.new_round()
         else: 
             print("Please input either 1 or 2: ")
 
     def determine_winner(self):
-        # self.player_one.current_gesture = self.player_one.select_gesture()
-        # self.player_two.current_gesture = self.player_two.select_gesture()
-        # print (f"Player 1 selected {self.player_one.current_gesture}")
-        # print (f"Player 2 selected {self.player_two.current_gesture}")
-        while self.player_one.score < 3 and self.player_two.score < 3:
-            if self.player_one.current_gesture == self.player_two.current_gesture:
+        if self.player_one.current_gesture == self.player_two.current_gesture:
                 print("It's a Tie!")
-            elif self.player_one.current_gesture == "Rock" and (self.player_two.current_gesture == "Paper" or self.player_two.current_gesture == "Spock"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Rock" and (self.player_two.current_gesture == "Paper" or self.player_two.current_gesture == "Spock"):
                 self.player_two.score= self.player_two.score + int(1)
                 print(f"Player 2 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Rock" and (self.player_two.current_gesture == "Scissors" or self.player_two.current_gesture == "Lizard"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Rock" and (self.player_two.current_gesture == "Scissors" or self.player_two.current_gesture == "Lizard"):
                 self.player_one.score= self.player_one.score + int(1)
                 print(f"Player 1 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Paper" and (self.player_two.current_gesture == "Scissors" or self.player_two.current_gesture == "Lizard"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Paper" and (self.player_two.current_gesture == "Scissors" or self.player_two.current_gesture == "Lizard"):
                 self.player_two.score= self.player_two.score + int(1)
                 print(f"Player 2 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Paper" and (self.player_two.current_gesture == "Rock" or self.player_two.current_gesture == "Spock"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Paper" and (self.player_two.current_gesture == "Rock" or self.player_two.current_gesture == "Spock"):
                 self.player_one.score= self.player_one.score + int(1)
                 print(f"Player 1 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Scissors" and (self.player_two.current_gesture == "Rock" or self.player_two.current_gesture == "Spock"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Scissors" and (self.player_two.current_gesture == "Rock" or self.player_two.current_gesture == "Spock"):
                 self.player_two.score= self.player_two.score + int(1)
                 print(f"Player 2 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Scissors" and (self.player_two.current_gesture == "Paper" or self.player_two.current_gesture == "Lizard"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Scissors" and (self.player_two.current_gesture == "Paper" or self.player_two.current_gesture == "Lizard"):
                 self.player_one.score= self.player_one.score + int(1)
                 print(f"Player 1 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Lizard" and (self.player_two.current_gesture == "Rock" or self.player_two.current_gesture == "Scissors"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Lizard" and (self.player_two.current_gesture == "Rock" or self.player_two.current_gesture == "Scissors"):
                 self.player_two.score= self.player_two.score + int(1)
                 print(f"Player 2 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Lizard" and (self.player_two.current_gesture == "Paper" or self.player_two.current_gesture == "Spock"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Lizard" and (self.player_two.current_gesture == "Paper" or self.player_two.current_gesture == "Spock"):
                 self.player_one.score= self.player_one.score + int(1)
                 print(f"Player 1 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Spock" and (self.player_two.current_gesture == "Paper" or self.player_two.current_gesture == "Lizard"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Spock" and (self.player_two.current_gesture == "Paper" or self.player_two.current_gesture == "Lizard"):
                 self.player_two.score= self.player_two.score + int(1)
                 print(f"Player 2 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
-            elif self.player_one.current_gesture == "Spock" and (self.player_two.current_gesture == "Rock" or self.player_two.current_gesture == "Scissors"):
+                self.new_round()
+        elif self.player_one.current_gesture == "Spock" and (self.player_two.current_gesture == "Rock" or self.player_two.current_gesture == "Scissors"):
                 self.player_one.score= self.player_one.score + int(1)
                 print(f"Player 1 Wins! Score: P1:{self.player_one.score} P2:{self.player_two.score}")
+                self.new_round()
+
+    def new_round(self):
+        while self.player_one.score < 3 and self.player_two.score < 3:
+            self.player_one.select_gesture()
+            self.player_two.select_gesture()
+            print (f"Player 1 selected {self.player_one.current_gesture}")
+            print (f"Player 2 selected {self.player_two.current_gesture}")
+            self.determine_winner()
+            return
         else:
             if self.player_one.score >= 3:
                 print(f"{self.player_one.name} Wins! \n Game Over")
+                return
             elif self.player_two.score >= 3:
                 print(f"{self.player_two.name} Wins! \n Game Over")
+                return
 
     def run_game(self):
         self.welcome_msg()
         self.game_rules()
         self.choose_players()
-        self.determine_winner()
